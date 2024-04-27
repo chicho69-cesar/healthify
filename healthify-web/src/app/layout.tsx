@@ -25,8 +25,10 @@ export default async function RootLayout({ children }: Props) {
         <Background />
         <NavBar isLogged={session != null} />
 
-        <main>
-          {children}
+        <main className='w-full'>
+          <section className='w-[90%] max-w-[1200px] mx-auto'>
+            {children}
+          </section>
         </main>
       </body>
     </html>

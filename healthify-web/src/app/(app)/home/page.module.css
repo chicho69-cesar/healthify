@@ -1,0 +1,19 @@
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'none1 first first second second none2'
+                        'none3 none3 third third none4 none4';
+  gap: 1rem;
+}
+
+.first {
+  grid-area: first;
+}
+
+.second {
+  grid-area: second;
+}
+
+.third {
+  grid-area: third;
+}
