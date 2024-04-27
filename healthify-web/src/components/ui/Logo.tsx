@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 interface Props {
   isLink?: boolean
@@ -9,13 +9,13 @@ export default function Logo({ isLink = true }: Props) {
     <>
       {isLink ? (
         <Link href='/'>
-          <h1>
-            Healthi<span>fy</span>
+          <h1 className='text-4xl font-semibold'>
+            Healthi<span className='font-bold text-sky-600'>fy</span>
           </h1>
         </Link>
       ) : (
-        <h1>
-          Healthi<span>fy</span>
+        <h1 className='text-4xl font-semibold'>
+          Healthi<span className='font-bold text-sky-600'>fy</span>
         </h1>
       )}
     </>
