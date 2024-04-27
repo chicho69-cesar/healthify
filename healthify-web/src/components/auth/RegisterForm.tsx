@@ -4,7 +4,7 @@ import { useFormState } from 'react-dom'
 import Link from 'next/link'
 
 import { signUp } from '@/actions/user-actions'
-import AuthButton from './AuthButton'
+import SubmitButton from '../ui/SubmitButton'
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(signUp, undefined)
@@ -77,7 +77,7 @@ export default function RegisterForm() {
         </label>
       </div>
 
-      <AuthButton text='Regístrate' />
+      <SubmitButton text='Regístrate' />
 
       <div
         className='flex items-end h-8 space-x-1'

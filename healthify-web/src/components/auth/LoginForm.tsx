@@ -4,7 +4,7 @@ import { useFormState } from 'react-dom'
 import Link from 'next/link'
 
 import { signIn } from '@/actions/user-actions'
-import AuthButton from './AuthButton'
+import SubmitButton from '../ui/SubmitButton'
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(signIn, undefined)
@@ -46,7 +46,7 @@ export default function LoginForm() {
         </label>
       </div>
 
-      <AuthButton text='Iniciar sesión' />
+      <SubmitButton text='Iniciar sesión' />
 
       <div
         className='flex items-end h-8 space-x-1'
