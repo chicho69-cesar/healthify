@@ -1,11 +1,11 @@
 import { useFormStatus } from 'react-dom'
-import { Button } from '../ui/Button'
+import { Button } from './Button'
 
-interface AuthButtonProps {
+interface SubmitButtonProps {
   text: string
 }
 
-export default function AuthButton({ text }: AuthButtonProps) {
+export default function SubmitButton({ text }: SubmitButtonProps) {
   const { pending } = useFormStatus()
 
   return (

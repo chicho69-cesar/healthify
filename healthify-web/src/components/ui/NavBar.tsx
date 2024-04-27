@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import Logo from './Logo'
+import LogoutForm from '../auth/LogoutForm'
 
 interface NavBarProps {
   isLogged: boolean
 }
 
 export default function NavBar({ isLogged }: NavBarProps) {
-  console.log(isLogged)
-  
   return (
     <div className='w-full'>
       <header className='w-[90%] max-w-[1200px] mx-auto py-8 flex justify-between items-center gap-4'>
@@ -22,9 +21,25 @@ export default function NavBar({ isLogged }: NavBarProps) {
                     Inicio
                   </Link>
                 </li>
+                
+                <li>
+                  <Link href='/about' className='text-gray-800 font-medium'>
+                    Acerca de
+                  </Link>
+                </li>
+
+                <li>
+                  <LogoutForm />
+                </li>
               </>
             ) : (
               <>
+                <li>
+                  <Link href='/about' className='text-gray-800 font-medium'>
+                    Acerca de
+                  </Link>
+                </li>
+
                 <li>
                   <Link href='/sign-in' className='text-gray-800 font-medium'>
                     Iniciar sesión
