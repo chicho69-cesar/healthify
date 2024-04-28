@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import './Switch.css'
 
 interface SwitchProps {
@@ -9,8 +8,6 @@ interface SwitchProps {
 }
 
 export default function Switch({ checked, onChange }: SwitchProps) {
-  const [isChecked, setIsChecked] = useState(false)
-
   return (
     <>
       <label className='switch'>
