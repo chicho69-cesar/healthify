@@ -13,7 +13,7 @@ dataset_path = "C:/workspace/healthify/healthify-data/etl/extract/datasets/hyper
 data = pd.read_csv(dataset_path)
 
 # Mostrar tipos de datos
-data.dtypes
+print(data.dtypes)
 
 # Eliminar columnas especificadas
 columns_to_drop = [

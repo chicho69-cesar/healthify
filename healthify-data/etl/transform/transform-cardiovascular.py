@@ -8,15 +8,19 @@ recolectados en un único dataset.
 # Importar librerías
 import pandas as pd
 
+# Definir paths
+input_file = "C:/workspace/healthify/healthify-data/etl/extract/datasets/cardiovascular.csv"
+output_file = "C:/workspace/healthify/healthify-data/etl/load/cardiovascular.csv"
+
 # Cargar el dataset como una cadena y reemplazar los delimitadores
-with open("C:/workspace/healthify/healthify-data/etl/extract/datasets/cardiovascular.csv", "r") as file:
+with open(input_file, "r", encoding="utf-8") as file:
     data_str = file.read()
 
 # Reemplazar los puntos y comas por comas
 data_str_comas = data_str.replace(";", ",")
 
 # Guardar el nuevo archivo con comas como delimitador
-with open("C:/workspace/healthify/healthify-data/etl/transform/cardiovascular-pre.csv", "w") as file:
+with open(output_file, "w", encoding="utf-8") as file:
     file.write(data_str_comas)
 
 # Cargar el dataset
@@ -24,7 +28,7 @@ dataset_path = "C:/workspace/healthify/healthify-data/etl/transform/cardiovascul
 data = pd.read_csv(dataset_path)
 
 # Mostrar tipos de datos
-data.dtypes
+print(data.dtypes)
 
 # Mostrar los datos más importantes
 print("Primeras filas del dataset:")
