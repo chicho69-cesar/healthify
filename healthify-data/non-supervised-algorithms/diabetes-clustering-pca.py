@@ -1,3 +1,5 @@
+# 03
+
 # Importaci贸n de bibliotecas necesarias
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,18 +8,18 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 # Carga del conjunto de datos
-data = pd.read_csv("C:/Users/cesar/OneDrive/Documentos/ITA/Octavo Semestre/Big Data Analytics/Unidad II/Actividad 3 - Reporte T閏nico del avance del proyecto/etl/load/diabetes.csv", sep=',')
+data = pd.read_csv("C:/workspace/healthify/healthify-data/etl/load/diabetes.csv", sep=',')
 df = pd.DataFrame(data)
 
-# Estandarizacion de datos
+# Estandarizaci贸n de datos
 scaler = StandardScaler()
 df_scaled = scaler.fit_transform(df)
 
-# Reduccion de dimensionalidad mediante PCA
+# Reducci贸n de dimensionalidad mediante PCA
 pca = PCA(n_components=2)
 principal_components = pca.fit_transform(df_scaled)
 
-# Creacion de un DataFrame con los componentes principales
+# Creaci贸n de un DataFrame con los componentes principales
 principal_df = pd.DataFrame(data=principal_components, columns=['PC1', 'PC2'])
 
 # Visualizaci贸n de los datos en el espacio reducido de dos dimensiones
@@ -37,13 +39,13 @@ cumulative_variance = pca.explained_variance_ratio_.cumsum()
 
 # Trama de la varianza explicada acumulativa
 plt.plot(cumulative_variance, marker='o')
-plt.xlabel('N鷐ero de componentes principales')
+plt.xlabel('N锟絤ero de componentes principales')
 plt.ylabel('Varianza explicada acumulativa')
-plt.title('Varianza explicada acumulativa por n鷐ero de componentes principales')
+plt.title('Varianza explicada acumulativa por n锟絤ero de componentes principales')
 plt.grid(True)
 plt.show()
 
-# Visualizaci髇 3D de los componentes principales
+# Visualizaci贸n 3D de los componentes principales
 if principal_components.shape[1] >= 3:
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -51,14 +53,14 @@ if principal_components.shape[1] >= 3:
     ax.set_xlabel('PC1')
     ax.set_ylabel('PC2')
     ax.set_zlabel('PC3')
-    ax.set_title('Visualizaci髇 3D de los componentes principales')
+    ax.set_title('Visualizaci贸n 3D de los componentes principales')
     plt.show()
 
-# An醠isis de carga de componentes
+# An谩lisis de carga de componentes
 components_df = pd.DataFrame(pca.components_, columns=df.columns)
 plt.figure(figsize=(12, 6))
 sns.heatmap(components_df, cmap='coolwarm', annot=True)
-plt.title('An醠isis de carga de componentes')
+plt.title('An谩lisis de carga de componentes')
 plt.xlabel('Variables')
 plt.ylabel('Componentes Principales')
 plt.show()

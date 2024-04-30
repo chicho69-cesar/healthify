@@ -1,4 +1,6 @@
-# Importacion de bibliotecas necesarias
+# 01
+
+# Importaci贸n de bibliotecas necesarias
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -8,29 +10,29 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 # Carga de datos
-data = pd.read_csv("C:/Users/cesar/OneDrive/Documentos/ITA/Octavo Semestre/Big Data Analytics/Unidad II/Actividad 3 - Reporte T閏nico del avance del proyecto/etl/load/diabetes.csv")
+data = pd.read_csv("C:/workspace/healthify/healthify-data/etl/load/diabetes.csv")
 df = pd.DataFrame(data)
 
-# Creacion de un DataFrame a partir de los datos estandarizados
+# Creaci贸n de un DataFrame a partir de los datos estandarizados
 scaler = StandardScaler()
 df_scaled = scaler.fit_transform(df)
 
-# Visualizaci髇 de la estructura jer醨quica con dendrogramas
+# Visualizaci贸n de la estructura jer谩rquica con dendrogramas
 plt.figure(figsize=(10, 7))
 plt.title("Diabetes Dendrogram")
 clusters = shc.linkage(df_scaled, method='ward', metric="euclidean")
 dend = shc.dendrogram(clusters)
 plt.show()
 
-# Aplicacion de Hierarchical Clustering Agglomerative
+# Aplicaci贸n de Hierarchical Clustering Agglomerative
 clustering_model = AgglomerativeClustering(n_clusters=2, affinity='euclidean', linkage='ward')
 clustering_model.fit(df_scaled)
 data_labels = clustering_model.labels_
 
-# Asignacion de etiquetas al conjunto de datos original
+# Asignaci贸n de etiquetas al conjunto de datos original
 df['Labels'] = data_labels
 
-# Visualizacion de los datos etiquetados en un gr谩fico de dispersion
+# Visualizaci贸n de los datos etiquetados en un gr谩fico de dispersion
 sns.scatterplot(x='Glucose', y='BMI', data=df, hue='Labels', palette="rainbow").set_title('Labeled Diabetes Data')
 
 # Extraer las etiquetas verdaderas del campo 'Outcome'
