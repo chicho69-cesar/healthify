@@ -2,19 +2,14 @@
 
 # Importar las bibliotecas necesarias
 import pandas as pd
-import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, roc_auc_score, roc_curve
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Cargar el conjunto de datos de diabetes
 path_to_file = "C:/workspace/healthify/healthify-data/etl/load/diabetes.csv"
 diabetes_data = pd.read_csv(path_to_file)
-
-# Preprocesamiento de datos
-# TODO: Aquí deberías realizar cualquier preprocesamiento necesario, como llenar valores faltantes, convertir variables categóricas a numéricas, etc.
 
 # Dividir el conjunto de datos en variables predictoras (X) y variable objetivo (y)
 X = diabetes_data.drop("Outcome", axis=1)

@@ -6,7 +6,8 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 import matplotlib.pyplot as plt
 import numpy as np
-import sklearn.metrics as metrics
+import sklearn.metrics as accuracy_score
+from sklearn.model_selection import train_test_split
 
 # Cargar el conjunto de datos de diabetes
 path_to_file = "C:/workspace/healthify/healthify-data/etl/load/diabetes.csv"
@@ -29,6 +30,10 @@ plt.show()
 
 print("Ecuación de la recta (Regresión Lineal): Outcome =", reg_l.coef_, "* Glucose +", reg_l.intercept_)
 
+# Coeficiente de determinación (R²) para Regresión Lineal
+linear_r2 = reg_l.score(diabetes_data[["Glucose"]], diabetes_data["Outcome"])
+print("Coeficiente de determinación (R²) para Regresión Lineal:", linear_r2)
+
 
 
 # Regresión Polinomial
@@ -48,6 +53,12 @@ plt.show()
 
 print("Ecuación del polinomio (Regresión Polinomial): Outcome =", reg_p.coef_[2], "* Glucose^2 +", reg_p.coef_[1], "* Glucose +", reg_p.coef_[0] + reg_p.intercept_)
 
+# Coeficiente de determinación (R²) para Regresión Polinomial
+poly_r2 = reg_p.score(x_poly, diabetes_data["Outcome"])
+print("Coeficiente de determinación (R²) para Regresión Polinomial:", poly_r2)
+
+
+
 
 
 # Regresión Logística
@@ -62,6 +73,9 @@ x_logistic_scaled = scaler.fit_transform(x_logistic)
 log_reg = LogisticRegression()
 log_reg.fit(x_logistic_scaled, y_logistic)
 diabetes_data["Modelo_Logistico"] = log_reg.predict(x_logistic_scaled)
+
+# Predicciones del modelo logístico
+y_pred_logistic = log_reg.predict(x_logistic_scaled)
 
 # Gráfica del modelo logístico
 plt.scatter(diabetes_data["Glucose"], diabetes_data["BMI"], c=diabetes_data["Outcome"], cmap="coolwarm")

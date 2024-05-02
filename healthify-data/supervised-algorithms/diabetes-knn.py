@@ -13,9 +13,6 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 path_to_file = "C:/workspace/healthify/healthify-data/etl/load/diabetes.csv"
 diabetes_data = pd.read_csv(path_to_file)
 
-# Preprocesamiento de datos (si es necesario)
-# TODO: Aquí deberías realizar cualquier preprocesamiento necesario, como llenar valores faltantes, convertir variables categóricas a numéricas, etc.
-
 # Dividir el conjunto de datos en variables predictoras (X) y variable objetivo (y)
 X = diabetes_data.drop("Outcome", axis=1)
 y = diabetes_data["Outcome"]

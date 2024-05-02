@@ -4,9 +4,6 @@
 # Manejo de datos
 import pandas as pd
 
-# Manejo de matrices y funciones matemáticas
-import numpy as np
-
 # Graficación
 import matplotlib.pyplot as plt
 
@@ -15,6 +12,7 @@ from sklearn.linear_model import Perceptron
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score
 
 
 # Ingresar datos y generar data frame
@@ -57,6 +55,10 @@ ax.set_ylabel('Glucose')
 ax.set_zlabel('BloodPressure')
 plt.show()
 
+# Calcular precisión del Perceptrón
+accuracy_pcp = accuracy_score(y, yp)
+print("Precisión del Perceptrón:", accuracy_pcp)
+
 
 
 
@@ -90,3 +92,7 @@ ax.set_xlabel('BMI')
 ax.set_ylabel('Glucose')
 ax.set_zlabel('BloodPressure')
 plt.show()
+
+# Calcular precisión de la Red Neuronal
+accuracy_nn = accuracy_score(y, ypnn)
+print("Precisión de la Red Neuronal:", accuracy_nn)

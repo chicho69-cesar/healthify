@@ -1,7 +1,6 @@
 # 02
 
 # Importar las bibliotecas necesarias
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -44,3 +43,7 @@ plt.show()
 a = regression_model.coef_[0]
 b = regression_model.intercept_
 print("Ecuación de la regresión: Y =", a, "* X +", b)
+
+# Evaluar la precisión del modelo con los datos de prueba
+accuracy = regression_model.score(X_test, Y_test)
+print("Precisión del modelo con datos:", accuracy)
