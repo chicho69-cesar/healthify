@@ -1,4 +1,4 @@
-# 03
+# 02
 
 # Importación de bibliotecas necesarias
 import pandas as pd
