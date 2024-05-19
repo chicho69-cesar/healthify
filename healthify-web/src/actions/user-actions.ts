@@ -1,21 +1,22 @@
 'use server'
 
 import { signIn as signInAuth, signOut as signOutAuth } from '@/auth'
+import { validateEmail, validatePassword } from '@/lib/validations/user-validations'
+import { createUser } from '@/services/user-service'
 import { AuthError } from 'next-auth'
 import { redirect } from 'next/navigation'
 
 export async function signIn(prevState: string | undefined, formData: FormData) {
   try {
-    // TODO: Validate form data here
     await signInAuth('credentials', formData)
     redirect('/home')
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.'
+          return 'Credenciales invalidas.'
         default:
-          return 'Something went wrong.'
+          return 'Algo salio mal.'
       }
     }
 
@@ -30,8 +31,22 @@ export async function signUp(prevState: string | undefined, formData: FormData) 
     const password = formData.get('password') as string
     const confirmPassword = formData.get('confirm-password') as string
 
-    // TODO: Validate form data here
-    // Crear usuario en la db
+    const isValidEmail = validateEmail(email)
+    const isValidPassword = validatePassword(password)
+
+    if (!isValidEmail) {
+      return 'Email invalido.'
+    }
+
+    if (!isValidPassword) {
+      return 'Contraseña invalida.'
+    }
+
+    if (password !== confirmPassword) {
+      return 'Las contraseñas no coinciden.'
+    }
+
+    await createUser(name, email, password)
 
     const data = new FormData()
     data.append('email', email)
@@ -43,9 +58,9 @@ export async function signUp(prevState: string | undefined, formData: FormData) 
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.'
+          return 'Credenciales inválidas.'
         default:
-          return 'Something went wrong.'
+          return 'Algo salió mal.'
       }
     }
 

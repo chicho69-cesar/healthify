@@ -4,7 +4,7 @@ import { signOut } from '@/actions/user-actions'
 import { useFormState } from 'react-dom'
 
 export default function LogoutForm() {
-  const [, dispatch] = useFormState(signOut, undefined)
+  const [errorMessage, dispatch] = useFormState(signOut, undefined)
 
   return (
     <form action={dispatch}>

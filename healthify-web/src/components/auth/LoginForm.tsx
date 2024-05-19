@@ -54,7 +54,7 @@ export default function LoginForm() {
         aria-atomic='true'
       >
         {errorMessage && (
-          <p className='text-sm text-red-500'>{errorMessage}</p>
+          <p className='text-sm font-semibold text-red-500'>{errorMessage}</p>
         )}
       </div>
 
