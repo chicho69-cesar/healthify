@@ -11,4 +11,3 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - ./data:/data/db
-    restart: always
