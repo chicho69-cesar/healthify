@@ -15,10 +15,10 @@ diabetes_data = pd.read_csv(path_to_file)
 
 # Dividir el conjunto de datos en variables predictoras (X) y variable objetivo (y)
 X = diabetes_data.drop("Outcome", axis=1)
-y = diabetes_data["Outcome"]
+Y = diabetes_data["Outcome"]
 
 # Dividir el conjunto de datos en conjuntos de entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
 # Identificar el valor óptimo de k
 nbrs = []
@@ -45,8 +45,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print("Precisión del modelo:", accuracy)
 
 conf_matrix = confusion_matrix(y_test, y_pred)
-print("Matriz de confusión:")
-print(conf_matrix)
+print("Matriz de confusión:", conf_matrix)
 
 # Reporte de clasificación
 print("Reporte de clasificación:")
