@@ -1,21 +1,24 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useFormState } from 'react-dom'
 
-import Switch from '../ui/Switch'
-import SubmitButton from '../ui/SubmitButton'
+import { cardiovascular } from '@/actions/app-actions'
 import { Button } from '../ui/Button'
+import SubmitButton from '../ui/SubmitButton'
+import Switch from '../ui/Switch'
 
 export default function CardiovascularForm() {
   const navigation = useRouter()
+  const [errorMessage, dispatch] = useFormState(cardiovascular, undefined)
   const [isWomen, setIsWomen] = useState(true)
   const [doActivity, setDoActivity] = useState(false)
   const [isSmoker, setIsSmoker] = useState(false)
   const [isAlcoholic, setIsAlcoholic] = useState(false)
 
   return (
-    <form className='w-full py-6 px-8 bg-white shadow-lg rounded-lg' action=''>
+    <form className='w-full py-6 px-8 bg-white shadow-lg rounded-lg' action={dispatch}>
       <h1 className='text-xl md:text-2xl lg:text-3xl mb-4'>
         Contesta las siguientes preguntas para saber tu nivel de riesgo de enfermedad cardiovascular
       </h1>
@@ -45,6 +48,13 @@ export default function CardiovascularForm() {
             />
             {' '}Hombre
           </span>
+
+          <input
+            type='hidden'
+            name='gender'
+            id='gender'
+            value={isWomen ? '2' : '1'}
+          />
         </p>
       </div>
 
@@ -144,6 +154,13 @@ export default function CardiovascularForm() {
             />
             {' '}Si
           </span>
+
+          <input
+            type='hidden'
+            name='physical-activity'
+            id='physical-activity'
+            value={doActivity ? '1' : '0'}
+          />
         </p>
 
         <p className='text-base w-full flex flex-col justify-start items-center gap-1'>
@@ -157,6 +174,13 @@ export default function CardiovascularForm() {
             />
             {' '}Si
           </span>
+
+          <input
+            type='hidden'
+            name='smoker'
+            id='smoker'
+            value={isSmoker ? '1' : '0'}
+          />
         </p>
         
         <p className='text-base w-full flex flex-col justify-start items-center gap-1'>
@@ -170,6 +194,13 @@ export default function CardiovascularForm() {
             />
             {' '}Si
           </span>
+
+          <input
+            type='hidden'
+            name='alcoholic'
+            id='alcoholic'
+            value={isAlcoholic ? '1' : '0'}
+          />
         </p>
       </div>
 
