@@ -91,5 +91,9 @@ def test():
     data = request.get_json()
     return {'prediction': data['test']}
 
+@app.route('/', methods=['GET'])
+def index():
+    return 'Ok'
+
 if __name__ == '__main__':
     app.run(debug=True)
