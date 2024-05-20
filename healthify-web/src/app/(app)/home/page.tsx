@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div className='w-4/5 md:w-3/4 mx-auto mt-20'>
       <h3 className='text-center text-2xl font-semibold mb-8'>
-        ¿De qué enfermedad te gustaría saber si eres propenso a padecer?
+        ¿Selecciona la enfermedad de la cual te gustaría saber si eres propenso a padecer?
       </h3>
 
       <section className={styles.grid}>
