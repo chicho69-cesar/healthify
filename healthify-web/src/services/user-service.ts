@@ -1,6 +1,6 @@
 import { User } from '@/types/user'
 import * as db from '@/database/db'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { User as UserDB } from '@/database/user'
 
 export async function getUser(email: string): Promise<User | undefined> {
